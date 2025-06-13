@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,22 +15,50 @@
             justify-content: center;
             background-color: lightcoral;
             border-radius: 10px;
-            
+            margin: 100px auto;
         }
+
+        .child {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            background: lightgreen;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .child:hover {
+            background: rgb(26, 168, 215);
+            color: white;
+            box-shadow: 0 8px 24px rgba(26, 168, 215, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            transition:
+                background 0.3s,
+                color 0.3s,
+                box-shadow 0.3s,
+                transform 0.2s;
+        }
+
+
+        /*#childBtn {
+            background-color: lightgreen;
+        }*/
     </style>
 </head>
+
 <body>
     <div class="parent" id="parentDiv">
         <button class="child" id="childBtn">Click Me, I am child</button>
     </div>
     <script>
-        document.getElementById("paretDiv").addEventListener('click',(){
+        document.getElementById("parentDiv").addEventListener('click', () => {
             alert("Parent Div Clicked")
         })
-        document.getElementById("childBtn").addEventListener("click", (e){
+        document.getElementById("childBtn").addEventListener("click", (e) => {
             alert("Child Button Clicked")
-            <!-- e.stopPropagation() -->
+            e.stopPropagation(); // Prevents the event from bubbling up to the parent
         })
     </script>
 </body>
+
 </html>
