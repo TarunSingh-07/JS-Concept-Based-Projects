@@ -1,0 +1,17 @@
+body{
+    margin: 40px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50vh;
+    flex-direction: column;
+}
+input, select, button{
+    margin: 5px;
+    padding: 8px;
+}
+#result{
+    margin-top: 15px;
+    
+}

@@ -15,7 +15,8 @@
             transition: background 0.5s;
             gap: 20px;
         }
-        button{
+
+        button {
             padding: 12px 24px;
             font-size: 1.2em;
             border-radius: 5px;
@@ -25,7 +26,8 @@
             color: blueviolet;
             transition: background 0.3s;
         }
-        button:hover{
+
+        button:hover {
             background-color: chartreuse;
         }
     </style>
@@ -42,19 +44,19 @@
             const letters = '0123456789ABCDEF'
             let color = '#'
             for (i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random()*16)]
+                color += letters[Math.floor(Math.random() * 16)]
             }
             return color
         }
 
-        document.getElementById('startBtn').addEventListener('click', () =>{
+        document.getElementById('startBtn').addEventListener('click', () => {
             if (intervalId) return
-            intervalId = setInterval(()=>{
+            intervalId = setInterval(() => {
                 document.body.style.backgroundColor = getRandomColor()
             }, 1000)
         })
-        
-        document.getElementById('stopBtn').addEventListener('click', ()=>{
+
+        document.getElementById('stopBtn').addEventListener('click', () => {
             clearInterval(intervalId)
             intervalId = null
         })
