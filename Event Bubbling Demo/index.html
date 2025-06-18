@@ -16,6 +16,7 @@
             background-color: lightcoral;
             border-radius: 10px;
             margin: 100px auto;
+            cursor: pointer;
         }
 
         .child {
@@ -39,9 +40,8 @@
                 transform 0.2s;
         }
 
-
         /*#childBtn {
-            background-color: lightgreen;
+            background-color: lightgreen; // This have higher specificity than .child:hover
         }*/
     </style>
 </head>
@@ -50,15 +50,18 @@
     <div class="parent" id="parentDiv">
         <button class="child" id="childBtn">Click Me, I am child</button>
     </div>
+
     <script>
         document.getElementById("parentDiv").addEventListener('click', () => {
             alert("Parent Div Clicked")
         })
+
         document.getElementById("childBtn").addEventListener("click", (e) => {
             alert("Child Button Clicked")
             e.stopPropagation(); // Prevents the event from bubbling up to the parent
         })
     </script>
+
 </body>
 
 </html>
