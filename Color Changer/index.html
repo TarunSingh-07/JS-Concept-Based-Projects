@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,14 +15,50 @@
             transition: background 0.5s;
             gap: 20px;
         }
+        button{
+            padding: 12px 24px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            background-color: rgb(61, 237, 237);
+            color: blueviolet;
+            transition: background 0.3s;
+        }
+        button:hover{
+            background-color: chartreuse;
+        }
     </style>
 </head>
+
 <body>
     <button id="startBtn">Start Color Changer</button>
-    <button id="stlopBtn">Stop Color Changer</button>
+    <button id="stopBtn">Stop Color Changer</button>
 
     <script>
         let intervalId = null
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF'
+            let color = '#'
+            for (i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random()*16)]
+            }
+            return color
+        }
+
+        document.getElementById('startBtn').addEventListener('click', () =>{
+            if (intervalId) return
+            intervalId = setInterval(()=>{
+                document.body.style.backgroundColor = getRandomColor()
+            }, 1000)
+        })
+        
+        document.getElementById('stopBtn').addEventListener('click', ()=>{
+            clearInterval(intervalId)
+            intervalId = null
+        })
     </script>
 </body>
+
 </html>
