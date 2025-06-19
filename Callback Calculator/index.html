@@ -26,47 +26,48 @@
     <div id="result"></div>
 
     <script>
-        function add(a, b){
+        function add(a, b) {
             return a + b
         }
-        function substract(a, b){
+        function substract(a, b) {
             return a - b
         }
-        function multiply(a, b){
+        function multiply(a, b) {
             return a * b
         }
-        function divide(a, b){
+        function divide(a, b) {
             return a / b
         }
 
-        function calculate(a,b, callback){
-            return calculate(a, b)
+        function calculate(a, b, callback) {
+            return callback(a, b)
         }
 
         document.getElementById('calcBtn').addEventListener('click', () => {
             const num1 = parseFloat(document.getElementById('num1').value)
             const num2 = parseFloat(document.getElementById('num2').value)
-            const op = document.getElementById('operation').value
-        })
+            const op = document.getElementById('Operation').value
 
-        let result
-        switch (op){
-            case 'add':
-                result = calculate(num1,num2,add)
-                break
-            case 'add':
-                result = calculate(num1,num2,add)
-                break
-            case 'add':
-                result = calculate(num1,num2,add)
-                break
-            case 'add':
-                result = calculate(num1,num2,add)
-                break
-            case 'add':
-                result = calculate(num1,num2,add)
-                break
-        }
+
+            let result
+            switch (op) {
+                case 'add':
+                    result = calculate(num1, num2, add)
+                    break
+                case 'substract':
+                    result = calculate(num1, num2, substract)
+                    break
+                case 'multiply':
+                    result = calculate(num1, num2, multiply)
+                    break
+                case 'divide':
+                    result = calculate(num1, num2, divide)
+                    break
+                default:
+                    result = 'Invalid operation'
+            }
+            document.getElementById('result').textContent = `Result: ${result}`
+        });
 
 
 
