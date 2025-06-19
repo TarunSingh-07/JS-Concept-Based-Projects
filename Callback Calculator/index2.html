@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        input, select, button{
+            margin: 10px;
+            padding: 12px 14px;
+        }
+
+        #result{
+            border: 2px solid black;
+            margin-top: 20px;
+            padding: 10px 20px;
+            min-width: 80px;
+            display: inline-block;
+            border-radius: 6px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <input type="number" id="no1" placeholder="Number 1">
+
+    <select id="Operation">
+        <option value="plus">+</option>
+        <option value="minus">-</option>
+        <option value="into">*</option>
+        <option value="divide">/</option>
+    </select>
+    <input type="number" id="no2" placeholder="Number 2">
+
+    <button id="calcBtn">Calculate</button>
+    <div id="result"></div>
+
+    <script>
+        function plus(a,b){
+            return a+b
+        }
+        function minus(a,b){
+            return a-b
+        }
+        function into(a,b){
+            return a*b
+        }
+        function divide(a,b){
+            return a/b
+        }
+
+        function calculate(a, b, callback){
+            return callback(a,b)
+        }
+
+        document.getElementById('calcBtn').addEventListener('click',()=>{
+            const num1 = parseFloat(document.getElementById("no1").value)
+            const num2 = parseFloat(document.getElementById("no2").value)
+            const operation = document.getElementById('Operation').value
+
+            let result
+            switch(operation){
+                case 'plus':
+                    result = calculate(num1, num2, plus)
+                    break
+                case 'minus':
+                    result = calculate(num1, num2, minus)
+                    break
+                case 'into':
+                    result = calculate(num1, num2, into)
+                    break
+                case 'divide':
+                    result = calculate(num1, num2, divide)
+                    break
+                default :
+                    result = "Invalid choice"
+            }
+             document.getElementById('result').innerText = `Result ${result}`
+        })
+    </script>
+</body>
+</html>
