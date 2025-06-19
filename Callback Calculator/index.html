@@ -16,7 +16,7 @@
         <select id="Operation">
             <option value="add"> + </option>
             <option value="substract"> - </option>
-            <option value="multiplication"> * </option>
+            <option value="multiply"> * </option>
             <option value="divide"> / </option>
         </select>
 
@@ -26,7 +26,50 @@
     <div id="result"></div>
 
     <script>
-        
+        function add(a, b){
+            return a + b
+        }
+        function substract(a, b){
+            return a - b
+        }
+        function multiply(a, b){
+            return a * b
+        }
+        function divide(a, b){
+            return a / b
+        }
+
+        function calculate(a,b, callback){
+            return calculate(a, b)
+        }
+
+        document.getElementById('calcBtn').addEventListener('click', () => {
+            const num1 = parseFloat(document.getElementById('num1').value)
+            const num2 = parseFloat(document.getElementById('num2').value)
+            const op = document.getElementById('operation').value
+        })
+
+        let result
+        switch (op){
+            case 'add':
+                result = calculate(num1,num2,add)
+                break
+            case 'add':
+                result = calculate(num1,num2,add)
+                break
+            case 'add':
+                result = calculate(num1,num2,add)
+                break
+            case 'add':
+                result = calculate(num1,num2,add)
+                break
+            case 'add':
+                result = calculate(num1,num2,add)
+                break
+        }
+
+
+
     </script>
 
 </body>
