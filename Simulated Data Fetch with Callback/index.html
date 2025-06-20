@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        body {
             margin: 40px;
         }
-        #fetchBtn{
+
+        #fetchBtn {
             padding: 12px 24px;
             font-size: 1.2em;
             border-radius: 5px;
@@ -17,7 +19,8 @@
             background-color: rgb(54, 230, 160);
             color: rgb(43, 46, 226);
         }
-        #result{
+
+        #result {
             margin-top: 20px;
             padding: 10px 20px;
             border: 1px solid #d00f0f;
@@ -25,14 +28,15 @@
         }
     </style>
 </head>
+
 <body>
     <button id="fetchBtn">Fetch User data</button>
     <div id="result"></div>
 
     <script>
-        function fetchUserData(callback){
+        function fetchUserData(callback) {
             document.getElementById('result').textContent = "Fetching data..."
-            setTimeout(()=>{
+            setTimeout(() => {
                 const user = {
                     name: "Tarun",
                     age: 22,
@@ -42,15 +46,16 @@
             }, 2000)
         }
 
-        function displayUserData(user){
+        function displayUserData(user) {
             document.getElementById('result').innerHTML = `<strong>Name:</strong> ${user.name}<br>
             <strong>Age:</strong> ${user.age}<br>
             <strong>Email:</strong> ${user.email}`
         }
 
-        document.getElementById('fetchBtn').addEventListener('click',()=>{
+        document.getElementById('fetchBtn').addEventListener('click', () => {
             fetchUserData(displayUserData)
         })
     </script>
 </body>
+
 </html>
