@@ -8,6 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promise Delay Timer</title>
     <style>
+        body {
+            margin: 50px;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 12px 24px;
+            border: 2px solid greenyellow;
+            background: rgb(178, 188, 188);
+            text-align: center;
+        }
+
         #delayInput {
             padding: 8px;
             width: 50vw;
@@ -19,6 +31,33 @@
     <input type="number" id="delayInput" placeholder="Enter delay in milliseconds" />
     <button id="startBtn">Start Timer</button>
     <div id="result"></div>
+
+    <script>
+        function delayMessage(ms) {
+            return new Promise(resolve => {
+                setTimeout(resolve, ms)
+            })
+        }
+
+        document.getElementById('startBtn').addEventListener('click', async () => {
+            const ms = parseInt(document.getElementById('delayInput').value, 10)
+            const result = document.getElementById('result')
+
+            if (isNaN(ms) || ms < 0) {
+                result.textContent = 'Please provide a valid non-negative number!....'
+                return
+            } else {
+
+                result.textContent = 'waiting for milliseconds to be done...'
+                await delayMessage(ms)
+                result.innerText = `Done! waited ${ms} milliseconds.`
+            }
+        })
+
+    </script>
 </body>
 
 </html>
+
+<!-- delayMessage(ms) returns a Promise that resolves after ms milliseconds.
+await pauses the execution of the async function at that line until the Promise is resolved (i.e., until the timer finishes). -->
