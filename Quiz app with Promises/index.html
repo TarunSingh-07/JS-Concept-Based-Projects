@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #quizBox{
+        #quizBox {
             margin-top: 30px;
             border: 2px solid #6366f1;
             padding: 18px 20px;
@@ -17,17 +18,35 @@
         }
     </style>
 </head>
+
 <body>
     <div id="quizBox">
-        <div id="question">
-            <input type="text" id="answerInput" placeholder="Your Answer">
-            <button id="submitBtn">Submit</button>
-            <div id="feedback"></div>
-        </div>
+        <div id="question"></div>
+        <input type="text" id="answerInput" placeholder="Your Answer">
+        <button id="submitBtn">Submit</button>
+        <div id="feedback"></div>
     </div>
 
     <script>
-        
+        const questions = [
+            { q: "what is the capital of france?", a: "paris" },
+            { q: "2 + 2 = ?", a: '4' },
+            { q: "what color is thesky in a clear day?", a: "blue" }
+        ]
+
+        function askQuestion(questionObj) {
+            return new Promise(resolve => {
+                document.getElementById('question').textContent = questionObj.q
+                document.getElementById('answerInput').value = ''
+                document.getElementById('feedback').textContent = ''
+                document.getElementById('answerInput').focus()
+
+                function 
+            })
+
+        }
+
     </script>
 </body>
+
 </html>
