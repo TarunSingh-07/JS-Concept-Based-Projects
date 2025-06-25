@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chained Promise for sequential tasks </title>
     <style>
-        body{
-            background: azure;   
+        body {
+            background: azure;
         }
-        h2{
+
+        h2 {
             text-align: center;
             margin-top: 30px;
-            color: plum;
+            color: rgb(222, 79, 222);
         }
-        #start{
+
+        #start {
             display: block;
             margin: 20px auto;
             padding: 10px 24px;
@@ -24,18 +27,54 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-        #start:hover{
+
+        #start:hover {
             background: purple;
+        }
+
+        #output {
+            border: 2px solid blue;
+            padding: 20px;
+            margin: 30px auto 0 auto;
+            min-height: 80px;
+            width: 250px;
         }
     </style>
 </head>
+
 <body>
     <h2>Chained promise for sequential Task</h2>
     <div id="output"></div>
     <button id="start">Start Sequence</button>
 
     <script>
-        
+        function task(message, delay) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    document.getElementById('output').innerHTML += `<div>${message}</div>`
+                    resolve()
+                }, delay)
+            })
+        }
+
+        document.getElementById('start').addEventListener('click', async () => {
+            document.getElementById('output').innerHTML = ''
+            await task('Task 1 done', 1000)
+            await task('Task 2 done', 1000)
+            await task('Task 3 done', 1000)
+            document.getElementById('output').innerHTML += `<div>All tasks completed!</div>`
+        })
+
+        /*document.getElementById('start').addEventListener('click',()=> {
+            document.getElementById('output').innerHTML = ''
+            task('Taask 1 done', 1000)
+                .then(()=> task('Task 2 done', 1000))
+                .then(()=> task('Task 3 done', 1000))
+                .then(()=> {
+                    document.getElementById('output').innerHTML += `<div>All tasks completed!</div>`
+                })
+        })*/
     </script>
 </body>
+
 </html>
