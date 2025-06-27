@@ -1,0 +1,40 @@
+<!-- This is a Promise based implementation of making parallel API calls . -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallel API Calls with Promise.all</title>
+    <style>
+        h2{
+            text-align: center;
+        }
+        #fetchBtn{
+            display: block;
+            margin: 20px auto 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>This is Parallel API Calls </h2>
+    <button id="fetchBtn">Fetch Data</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('fetchBtn').addEventListener('click', async()=>{
+            const data = document.getElementById('result')
+            data.innerHTML = "fetching Data..."
+
+            const urls = [
+                'https://jsonplaceholder.typicode.com/posts/1',
+                'https://jsonplaceholder.typicode.com/posts/2',
+                'https://jsonplaceholder.typicode.com/posts/3'
+            ]
+
+            try {
+                
+            }
+        })
+    </script>
+</body>
+</html>
