@@ -1,27 +1,61 @@
 <!-- This is a Promise based implementation of making parallel API calls . -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parallel API Calls with Promise.all</title>
     <style>
-        h2{
+        h2 {
             text-align: center;
+            margin-top: 30px;
+            color: burlywood;
         }
-        #fetchBtn{
+
+        #fetchBtn {
             display: block;
             margin: 20px auto 10px auto;
+            padding: 10px 20px;
+            background: rgb(55, 196, 168);
+            border: none;
+            color: whitesmoke;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        #fetchBtn:hover {
+            background: rgb(127, 67, 182);
+            color: aqua;
+        }
+
+        #result {
+            border: 2px solid blue;
+            width: 350px;
+            padding: 20px;
+            margin: 30px auto 0 auto;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+            font-size: 1em;
+        }
+
+        pre {
+            background: #f3f4f6;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
         }
     </style>
 </head>
+
 <body>
     <h2>This is Parallel API Calls </h2>
     <button id="fetchBtn">Fetch Data</button>
     <div id="result"></div>
 
     <script>
-        document.getElementById('fetchBtn').addEventListener('click', async()=>{
+        document.getElementById('fetchBtn').addEventListener('click', async () => {
             const data = document.getElementById('result')
             data.innerHTML = "fetching Data..."
 
@@ -32,14 +66,18 @@
             ]
 
             try {
-                const fetchPromise  = urls.map(url => fetch(url).then(res => res.json()))
+                const fetchPromise = urls.map(url => fetch(url).then(res => res.json()))
 
                 const result = await Promise.all(fetchPromise)
-                data.innerHTML = result.map((result,))
-            } catch {
+                data.innerHTML = result.map((result, index) => `
+                    <pre><strong>Result ${index + 1}:</strong>\n${JSON.stringify(result, null, 2)}</pre>
+                    `).join('')
+            } catch (err) {
+                data.innerHTML = 'Error fetching data!'
 
             }
         })
     </script>
 </body>
+
 </html>
