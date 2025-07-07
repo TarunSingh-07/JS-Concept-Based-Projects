@@ -4,6 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            background: #f3f4f6;
+            font-size: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        .calculator {
+            background: #fff;
+            border: 2px solid #6366f1;
+            border-radius: 8px;
+            display: inline-block;
+            padding: 30px 40px;
+            box-shadow: 0 2px 8px rgba(99,102,241,0.08);
+        }
+        input, select {
+            padding: 8px 12px;
+            margin: 8px;
+            border-radius: 5px;
+            border: 1px solid #bdbdbd;
+            font-size: 1em;
+        }
+
+         button {
+            padding: 8px 18px;
+            background: #6366f1;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #4f46e5;
+        }
+                #result {
+            margin-top: 18px;
+            font-weight: bold;
+            color: #22223b;
+        }
+        #error {
+            margin-top: 10px;
+            color: #e11d48;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <h2>Simple Calc Using Try & Catch</h2>
@@ -22,7 +69,37 @@
     </div>
 
     <script>
-        
+        document.getElementById('calcBtn').addEventListener('click', function() {
+            const num1 = document.getElementById('num1').value.trim()
+            const num2 = document.getElementById('num2').value.trim()
+            const op = document.getElementById('operator').value
+            const resultDiv = document.getElementById('result')
+            const error = document.getElementById('error')
+
+            resultDiv.textContent = ''
+            error.textContent = ''
+
+            try {
+                if (num1 === '' || num2 === '') throw "Both numbers are required."
+                const a = Number(num1)
+                const b = Number(num2)
+
+                if(isNaN(a) || isNaN(b)) throw "Please enter valid Numbers"
+                let result
+                switch(op) {
+                    case '+': result = a + b; break
+                    case '-': result = a - b; break
+                    case '*': result = a * b; break
+                    case '/':
+                        if (b === 0) throw "Division by Zero is not allowed"
+                        result = a / b; break
+                    default : throw "Invalid operator."
+                }
+                resultDiv.textContent = `Result: ${result}`
+            } catch (err) {
+                error.textContent = err
+            }
+        })
     </script>
 </body>
 </html>
